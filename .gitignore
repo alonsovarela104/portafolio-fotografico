@@ -1,0 +1,9 @@
+# Fotos originales de la cámara (~394 MB). No se suben: el sitio solo usa las
+# versiones ya convertidas de assets/img/. Guárdalas tú aparte (disco, iCloud).
+assets/photos/source/
+
+# macOS
+.DS_Store
+
+# Servidores locales / temporales
+*.log
