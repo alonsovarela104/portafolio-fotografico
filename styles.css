@@ -213,7 +213,17 @@ em { font-style: italic; color: var(--accent); }
 /* Las barras del menú heredan el color del nav (currentColor), así que cambian
    solas: claras sobre la foto de portada, oscuras cuando el nav se vuelve crema.
    Antes estaban fijas en oscuro y no se veían en la portada. */
-.nav.is-open { color: var(--ink); }   /* el panel abierto es crema */
+/* Con el menú abierto hay que quitar el backdrop-filter del nav: un elemento
+   con backdrop-filter se vuelve "bloque contenedor", y entonces el panel del
+   menú (position: fixed) se mide contra el nav (76px) en lugar de contra la
+   pantalla — se veía cortado. También se pinta de crema para que el nav y el
+   panel sean una sola superficie. */
+.nav.is-open {
+  color: var(--ink);
+  background: var(--cream);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
 .nav-inner {
   max-width: 1180px; margin-inline: auto; padding-inline: 1.5rem;
   height: 100%;
