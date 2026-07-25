@@ -78,7 +78,13 @@
     const buttons = $$(".filter-btn");
     if (!buttons.length || !items.length) return;
 
-    function apply(filter) {
+    const bar = $(".filter-bar");
+
+    function apply(filter, esClic) {
+      // Dónde estaba la barra de filtros antes de cambiar nada, para no perder
+      // al usuario de vista si la galería se encoge.
+      const topAntes = bar ? bar.getBoundingClientRect().top : 0;
+
       buttons.forEach(b => {
         const on = b.dataset.filter === filter;
         b.classList.toggle("is-active", on);
@@ -87,14 +93,29 @@
       items.forEach(item => {
         item.classList.toggle("is-hidden", !matchesFilter(item, filter));
       });
+
+      // Al ocultar fotos la página se hace más corta. Lenis guarda el alto
+      // máximo al iniciar, así que hay que avisarle: si no, se queda con el
+      // valor viejo y el scroll pega un salto (parecía que volvía al inicio).
+      if (window.__lenis && typeof window.__lenis.resize === "function") {
+        window.__lenis.resize();
+      }
       if (window.ScrollTrigger) ScrollTrigger.refresh();
+
+      // Si el usuario ya había bajado más allá de los filtros, dejarlos a la
+      // vista en lugar de soltarlo en un punto cualquiera de la galería.
+      if (esClic && bar && topAntes < 0) {
+        const destino = bar.getBoundingClientRect().top + window.scrollY - 88;
+        if (window.__lenis) window.__lenis.scrollTo(destino, { immediate: true });
+        else window.scrollTo(0, destino);
+      }
     }
 
-    buttons.forEach(btn => btn.addEventListener("click", () => apply(btn.dataset.filter)));
+    buttons.forEach(btn => btn.addEventListener("click", () => apply(btn.dataset.filter, true)));
 
     // Estado inicial: lo que venga marcado como activo en el HTML.
     const inicial = ($(".filter-btn.is-active") || buttons[0]).dataset.filter;
-    apply(inicial);
+    apply(inicial, false);
   }
 
   // ---------------------------------------------------------------

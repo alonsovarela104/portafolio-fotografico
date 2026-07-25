@@ -210,8 +210,10 @@ em { font-style: italic; color: var(--accent); }
 .nav.is-scrolled .nav-link:not(.nav-link-cta) {
   text-shadow: none;
 }
-.nav.is-scrolled .nav-toggle span { background: var(--ink); }
-.nav-toggle span { background: var(--cream); }
+/* Las barras del menú heredan el color del nav (currentColor), así que cambian
+   solas: claras sobre la foto de portada, oscuras cuando el nav se vuelve crema.
+   Antes estaban fijas en oscuro y no se veían en la portada. */
+.nav.is-open { color: var(--ink); }   /* el panel abierto es crema */
 .nav-inner {
   max-width: 1180px; margin-inline: auto; padding-inline: 1.5rem;
   height: 100%;
@@ -249,7 +251,7 @@ em { font-style: italic; color: var(--accent); }
   width: 34px; height: 34px;
 }
 .nav-toggle span {
-  display: block; height: 1.5px; width: 100%; background: var(--ink);
+  display: block; height: 1.5px; width: 100%; background: currentColor;
   transition: transform .3s var(--ease-out), opacity .3s var(--ease-out);
 }
 .nav.is-open .nav-toggle span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
