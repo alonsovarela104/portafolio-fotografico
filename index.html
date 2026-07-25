@@ -801,7 +801,9 @@
     <button class="lightbox-nav lightbox-prev" type="button" data-lightbox-prev aria-label="Foto anterior">‹</button>
     <button class="lightbox-nav lightbox-next" type="button" data-lightbox-next aria-label="Foto siguiente">›</button>
     <figure class="lightbox-figure">
-      <img data-lightbox-img src="" alt="" />
+      <!-- Sin atributo src: main.js lo rellena al abrir. Un src="" haría que el
+           navegador pidiera de nuevo la página entera. -->
+      <img data-lightbox-img alt="" />
       <figcaption data-lightbox-caption></figcaption>
     </figure>
   </dialog>
