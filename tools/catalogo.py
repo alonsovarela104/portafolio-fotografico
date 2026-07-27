@@ -28,6 +28,7 @@ ABOUT = ("IMG_2259.jpeg", "about-me",
 ZOOM = {
     "astro-saturno": 0.32,
     "astro-jupiter": 0.28,
+    "astro-luna-4": 0.30,   # tomada con cámara, la luna sale chica en el encuadre
 }
 
 FOTOS = [
@@ -47,6 +48,12 @@ FOTOS = [
     ("mexico/IMG_9028.jpeg", "mexico-bosque", "mexico", True,
      "",
      "Bosque de pinos altos con la luz del sol proyectando sombras largas en el suelo"),
+    ("mexico/IMG_2610.jpg", "mexico-arana-luna", "mexico", True,
+     "",
+     "Una araña en su telaraña recortada contra la luna llena, sobre el cielo azul de la noche"),
+    ("mexico/IMG_2625.jpg", "mexico-arana-telarana", "mexico", True,
+     "",
+     "Una araña en el centro de su telaraña iluminada en la oscuridad, con los hilos brillando"),
     ("mexico/IMG_1413.jpg", "mexico-venado-bn", "mexico", True,
      "",
      "Un venado pastando en un campo con niebla densa, en blanco y negro"),
@@ -302,6 +309,9 @@ FOTOS = [
     ("astro/IMG_8214.jpg", "astro-luna-3", "astro", False,
      "La Luna",
      "La Luna llena en blanco y negro, con los mares y cráteres bien marcados"),
+    ("astro/IMG_2613.jpg", "astro-luna-4", "astro", False,
+     "La Luna",
+     "La Luna en fase gibosa con tonos ámbar sobre el cielo negro"),
     ("astro/2025-10-20-210854-Saturn.jpg", "astro-saturno", "astro", False,
      "Saturno",
      "El planeta Saturno con sus anillos, pequeño sobre el fondo negro del cielo"),
