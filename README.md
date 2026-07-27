@@ -7,9 +7,8 @@ viajo y algo de astrofotografía.
 
 ## Qué hice
 
-Una galería de 90 fotos, organizadas por país y por tema, con una pestaña de
-Destacadas y un visor para abrir cada foto en grande. Lo armé de cero, sin
-plantillas.
+Una galería de fotos, organizadas por país y por tema, con una pestaña de
+Destacadas y un visor para abrir cada foto en grande.
 
 Como eran demasiadas fotos para acomodarlas a mano, escribí un script en Python
 que hace el trabajo pesado: corrige la orientación de las fotos del iPhone, las
