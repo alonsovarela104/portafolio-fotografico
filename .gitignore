@@ -7,3 +7,7 @@ assets/photos/source/
 
 # Servidores locales / temporales
 *.log
+
+# Caché de Python (se regenera solo)
+__pycache__/
+*.pyc
