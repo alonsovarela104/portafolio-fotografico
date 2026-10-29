@@ -3,7 +3,7 @@
 Sitio personal donde muestro las fotos que tomo: lo que me encuentro cuando
 viajo y algo de astrofotografía.
 
-🔗 **https://alonsovarela104.github.io/portafolio-fotografico/**
+🔗 **https://fotos.catonmars.com**
 
 ## Qué hice
 
