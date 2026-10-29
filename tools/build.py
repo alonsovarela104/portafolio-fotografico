@@ -21,11 +21,17 @@ Detalles que un conversor genérico no hace:
 
 import re
 import sys
+import json
+import datetime
 import pathlib
 from PIL import Image, ImageOps
 
+# La consola de Windows (cp1252) no sabe imprimir ★ ni →; sin esto el script se cae.
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
+
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
-from catalogo import FOTOS, HERO, ABOUT, ZOOM, CATEGORIAS, ETIQUETA  # noqa: E402
+from catalogo import FOTOS, HERO, ABOUT, ZOOM, CATEGORIAS, DOMINIO, SITIO  # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SRC = ROOT / "assets" / "photos" / "source"
@@ -93,19 +99,30 @@ def guardar(im, destino, perfil, slug=None):
 def construir_imagenes():
     print(f"Procesando {len(FOTOS)} fotos (+ portada y retrato)\n")
 
+    # Los originales no se suben a GitHub (están en .gitignore). Si en este equipo
+    # falta alguno, se conserva la imagen ya generada en vez de romper el script.
     rel, slug, _ = HERO
-    size, kb = guardar(cargar(rel), IMG / f"{slug}.webp", "hero")
-    print(f"  portada    {slug:22s} {size[0]}x{size[1]} {kb:6.0f} KB")
+    if (SRC / rel).exists():
+        size, kb = guardar(cargar(rel), IMG / f"{slug}.webp", "hero")
+        print(f"  portada    {slug:22s} {size[0]}x{size[1]} {kb:6.0f} KB")
+    else:
+        print(f"  portada    sin original ({rel}): se conserva la actual")
 
     rel, slug, _ = ABOUT
-    size, kb = guardar(cargar(rel), IMG / f"{slug}.webp", "full")
-    print(f"  retrato    {slug:22s} {size[0]}x{size[1]} {kb:6.0f} KB")
+    if (SRC / rel).exists():
+        size, kb = guardar(cargar(rel), IMG / f"{slug}.webp", "full")
+        print(f"  retrato    {slug:22s} {size[0]}x{size[1]} {kb:6.0f} KB")
+    else:
+        print(f"  retrato    sin original ({rel}): se conserva el actual")
 
-    formas = {}
+    formas = formas_desde_disco()     # las ya procesadas siguen en la galería
     total_kb = 0
     for rel, slug, cat, dest, titulo, alt in FOTOS:
         if not (SRC / rel).exists():
-            print(f"  !! FALTA {rel}")
+            if slug in formas:
+                print(f"  =  {slug:22s} sin original: se conserva la ya procesada")
+            else:
+                print(f"  !! FALTA {rel}  ({slug} no estará en la galería)")
             continue
         base = cargar(rel)
         (tw, th), tkb = guardar(base.copy(), IMG / "thumb" / f"{slug}.webp", "thumb", slug)
@@ -134,8 +151,91 @@ def esc(t):
              .replace('"', "&quot;"))
 
 
+def inyectar(html, marca, contenido, sangria=8):
+    patron = re.compile(rf"(<!-- {marca}:inicio -->).*?(<!-- {marca}:fin -->)", re.S)
+    nuevo, n = patron.subn(lambda m: f"{m.group(1)}\n{contenido}\n{' ' * sangria}{m.group(2)}", html)
+    if n != 1:
+        raise SystemExit(f"ERROR: no encontré los marcadores {marca}:inicio/fin en index.html")
+    return nuevo
+
+
+def bloque_seo():
+    """Etiquetas del <head> para Google y para la vista previa al compartir el enlace."""
+    base = DOMINIO.rstrip("/")
+    url = base + "/"
+    imagen = f"{base}/{SITIO['imagen']}"
+    titulo, desc = esc(SITIO["titulo"]), esc(SITIO["descripcion"])
+    ld = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {"@type": "WebSite", "@id": url + "#sitio", "url": url,
+             "name": SITIO["nombre"], "alternateName": f"{SITIO['nombre']} Fotografía",
+             "inLanguage": "es", "description": SITIO["descripcion"]},
+            {"@type": "Person", "@id": url + "#persona", "name": SITIO["nombre"], "url": url,
+             "jobTitle": SITIO["ocupacion"], "image": imagen, "sameAs": SITIO["perfiles"]},
+        ],
+    }
+    # "</" dentro del JSON cerraría el <script> antes de tiempo.
+    ld_txt = json.dumps(ld, ensure_ascii=False, indent=2).replace("</", "<\\/")
+    ld_txt = "\n".join("    " + linea for linea in ld_txt.splitlines())
+    lineas = [
+        f'  <title>{titulo}</title>',
+        f'  <meta name="description" content="{desc}" />',
+        f'  <meta name="author" content="{esc(SITIO["nombre"])}" />',
+        '  <meta name="robots" content="index, follow, max-image-preview:large" />',
+        f'  <link rel="canonical" href="{url}" />',
+        '',
+        '  <link rel="icon" href="favicon.svg" type="image/svg+xml" />',
+        '  <link rel="icon" href="favicon.ico" sizes="48x48" />',
+        '  <link rel="apple-touch-icon" href="apple-touch-icon.png" />',
+        '',
+        '  <meta property="og:type" content="website" />',
+        f'  <meta property="og:site_name" content="{esc(SITIO["nombre"])}" />',
+        f'  <meta property="og:title" content="{titulo}" />',
+        f'  <meta property="og:description" content="{desc}" />',
+        f'  <meta property="og:url" content="{url}" />',
+        f'  <meta property="og:image" content="{imagen}" />',
+        '  <meta property="og:image:width" content="1200" />',
+        '  <meta property="og:image:height" content="630" />',
+        f'  <meta property="og:image:alt" content="{esc(SITIO["imagen_alt"])}" />',
+        '  <meta property="og:locale" content="es_MX" />',
+        '  <meta name="twitter:card" content="summary_large_image" />',
+        f'  <meta name="twitter:title" content="{titulo}" />',
+        f'  <meta name="twitter:description" content="{desc}" />',
+        f'  <meta name="twitter:image" content="{imagen}" />',
+        '',
+        '  <script type="application/ld+json">',
+        ld_txt,
+        '  </script>',
+    ]
+    return "\n".join(lineas)
+
+
+def construir_sitemap(formas):
+    """sitemap.xml (la página + sus fotos, para Google Imágenes) y robots.txt."""
+    base = DOMINIO.rstrip("/")
+    fotos = "\n".join(
+        f"    <image:image><image:loc>{base}/assets/img/full/{slug}.webp</image:loc></image:image>"
+        for _, slug, *_ in FOTOS if slug in formas
+    )
+    sitemap = (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '
+        'xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n'
+        '  <url>\n'
+        f'    <loc>{base}/</loc>\n'
+        f'    <lastmod>{datetime.date.today().isoformat()}</lastmod>\n'
+        f'{fotos}\n'
+        '  </url>\n'
+        '</urlset>\n'
+    )
+    (ROOT / "sitemap.xml").write_text(sitemap, encoding="utf-8", newline="\n")
+    robots = f"User-agent: *\nAllow: /\n\nSitemap: {base}/sitemap.xml\n"
+    (ROOT / "robots.txt").write_text(robots, encoding="utf-8", newline="\n")
+
+
 def construir_html(formas):
-    """Inyecta los botones de filtro y las figuras entre los marcadores del HTML."""
+    """Inyecta los botones de filtro, las figuras y las etiquetas SEO entre los marcadores del HTML."""
     filtros = []
     for valor, etiqueta in CATEGORIAS:
         activo = ' is-active' if valor == "destacadas" else ''
@@ -150,32 +250,24 @@ def construir_html(formas):
         if slug not in formas:
             continue
         destacada = ' data-featured' if dest else ''
-        # Al pasar el cursor solo se muestra la etiqueta del país/tema. Las
-        # astrofotos añaden su dato (objeto y exposición), que sí aporta algo.
-        pie = f'<span>{ETIQUETA[cat]}</span>' + (f' {esc(nota)}' if nota else '')
-        figuras.append(f"""          <figure class="gallery-item" data-aspect="{formas[slug]}" data-category="{cat}"{destacada} data-reveal>
+        # Solo las astrofotos llevan descripción visible (objeto y exposición).
+        pie = (f'\n              <figcaption class="gallery-caption">{esc(nota)}</figcaption>'
+               if cat == "astro" and nota else '')
+        figuras.append(f"""          <figure class="gallery-item" data-aspect="{formas[slug]}" data-category="{cat}"{destacada}>
             <button class="gallery-trigger" type="button" data-full="assets/img/full/{slug}.webp">
-              <img class="gallery-img" src="assets/img/thumb/{slug}.webp" alt="{esc(alt)}" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption">{pie}</figcaption>
+              <img class="gallery-img" src="assets/img/thumb/{slug}.webp" alt="{esc(alt)}" loading="lazy" decoding="async" />{pie}
             </button>
           </figure>""")
 
-    def inyectar(html, marca, contenido):
-        patron = re.compile(rf"(<!-- {marca}:inicio -->).*?(<!-- {marca}:fin -->)", re.S)
-        nuevo, n = patron.subn(lambda m: f"{m.group(1)}\n{contenido}\n        {m.group(2)}", html)
-        if n != 1:
-            raise SystemExit(f"ERROR: no encontré los marcadores {marca}:inicio/fin en index.html")
-        return nuevo
-
     html = (ROOT / "index.html").read_text(encoding="utf-8")
+    html = inyectar(html, "SEO", bloque_seo(), sangria=2)
     html = inyectar(html, "FILTROS", "\n".join(filtros))
     html = inyectar(html, "GALERIA", "\n\n".join(figuras))
     (ROOT / "index.html").write_text(html, encoding="utf-8")
+    construir_sitemap(formas)
 
     n_dest = sum(1 for f in FOTOS if f[3] and f[1] in formas)
-    unidades = sum(2 if formas[f[1]] == "wide" else 1 for f in FOTOS if f[3] and f[1] in formas)
-    print(f"\n  HTML: {len(figuras)} fotos · {n_dest} destacadas "
-          f"({unidades} columnas → {'cuadra' if unidades % 4 == 0 else 'NO cuadra'} en 4 columnas)")
+    print(f"\n  HTML: {len(figuras)} fotos · {n_dest} destacadas")
 
 
 if __name__ == "__main__":

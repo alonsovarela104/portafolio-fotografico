@@ -3,8 +3,66 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Alonso Varela — Fotografía</title>
-  <meta name="description" content="Fotografías de mis viajes y algo de astrofotografía. Portafolio personal de Alonso Varela, desarrollador de software." />
+  <meta name="theme-color" content="#0b0a09" />
+
+  <!-- Título, descripción, vista previa al compartir y datos para Google:
+       los genera tools/build.py a partir de tools/catalogo.py (DOMINIO y SITIO). -->
+  <!-- SEO:inicio -->
+  <title>Alonso Varela | Fotografía de viajes y astrofotografía</title>
+  <meta name="description" content="Portafolio fotográfico de Alonso Varela: fotos de viajes por México, Japón y Perú, y astrofotografía de nebulosas, galaxias y la Luna." />
+  <meta name="author" content="Alonso Varela" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://fotos.catonmars.com/" />
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="favicon.ico" sizes="48x48" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Alonso Varela" />
+  <meta property="og:title" content="Alonso Varela | Fotografía de viajes y astrofotografía" />
+  <meta property="og:description" content="Portafolio fotográfico de Alonso Varela: fotos de viajes por México, Japón y Perú, y astrofotografía de nebulosas, galaxias y la Luna." />
+  <meta property="og:url" content="https://fotos.catonmars.com/" />
+  <meta property="og:image" content="https://fotos.catonmars.com/assets/img/og.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Alonso Varela, portafolio fotográfico: fotos de viajes y astrofotografía" />
+  <meta property="og:locale" content="es_MX" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Alonso Varela | Fotografía de viajes y astrofotografía" />
+  <meta name="twitter:description" content="Portafolio fotográfico de Alonso Varela: fotos de viajes por México, Japón y Perú, y astrofotografía de nebulosas, galaxias y la Luna." />
+  <meta name="twitter:image" content="https://fotos.catonmars.com/assets/img/og.jpg" />
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://fotos.catonmars.com/#sitio",
+          "url": "https://fotos.catonmars.com/",
+          "name": "Alonso Varela",
+          "alternateName": "Alonso Varela Fotografía",
+          "inLanguage": "es",
+          "description": "Portafolio fotográfico de Alonso Varela: fotos de viajes por México, Japón y Perú, y astrofotografía de nebulosas, galaxias y la Luna."
+        },
+        {
+          "@type": "Person",
+          "@id": "https://fotos.catonmars.com/#persona",
+          "name": "Alonso Varela",
+          "url": "https://fotos.catonmars.com/",
+          "jobTitle": "Desarrollador de software y fotógrafo",
+          "image": "https://fotos.catonmars.com/assets/img/og.jpg",
+          "sameAs": [
+            "https://github.com/alonsovarela104",
+            "https://www.linkedin.com/in/jorge-alonso-avalos-varela-8b54b13b5/",
+            "https://www.instagram.com/alonsovarelaxd/"
+          ]
+        }
+      ]
+    }
+  </script>
+  <!-- SEO:fin -->
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,85 +70,33 @@
 
   <link rel="preload" as="image" href="assets/img/hero.webp" fetchpriority="high">
 
-  <link rel="stylesheet" href="styles.css?v=20260726b">
+  <link rel="stylesheet" href="styles.css?v=20261102a">
 </head>
 <body>
-  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <a class="skip-link" href="#galeria">Saltar a la galería</a>
 
-  <nav class="nav" data-nav>
-    <div class="nav-inner">
-      <a href="#inicio" class="nav-brand">Alonso Varela</a>
-      <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="nav-menu">
-        <span></span><span></span><span></span>
-        <span class="sr-only">Abrir menú</span>
-      </button>
-      <div class="nav-menu" id="nav-menu" data-nav-menu>
-        <a class="nav-link" href="#inicio">Inicio</a>
-        <a class="nav-link" href="#galeria">Galería</a>
-        <a class="nav-link" href="#sobre">Sobre mí</a>
-        <a class="nav-link nav-link-cta" href="#contacto" data-magnetic="0.25">Contacto</a>
-      </div>
-    </div>
-  </nav>
+  <div class="stage-bg">
+    <img class="bg-layer is-on" src="assets/img/hero.webp" alt="El volcán Iztaccíhuatl nevado al atardecer, con la silueta de un árbol en primer plano" fetchpriority="high" loading="eager" decoding="async" data-bg-layer />
+    <!-- Segunda capa del fundido cruzado: main.js le pone el src al cambiar de filtro. -->
+    <img class="bg-layer" alt="" decoding="async" data-bg-layer />
+  </div>
 
-  <main id="contenido">
+  <header class="nav">
+    <a class="nav-brand" href="#galeria" data-home>Alonso Varela</a>
+    <nav class="nav-links" aria-label="Principal">
+      <button class="nav-link nav-link-home" type="button" data-home>Galería</button>
+      <button class="nav-link" type="button" data-panel-open="sobre">Sobre mí</button>
+      <button class="nav-link" type="button" data-panel-open="contacto">Contacto</button>
+    </nav>
+    <a class="nav-ext" href="https://www.instagram.com/alonsovarelaxd/" target="_blank" rel="noopener">Instagram <span aria-hidden="true">↗</span></a>
+  </header>
 
-    <!-- HERO -->
-    <section class="hero" id="inicio">
-      <div class="hero-bg">
-        <img src="assets/img/hero.webp" alt="El volcán Iztaccíhuatl nevado al atardecer, con la silueta de un árbol en primer plano" fetchpriority="high" loading="eager" decoding="sync" data-hero-img />
-        <div class="hero-tint"></div>
-      </div>
-      <div class="hero-inner">
-        <p class="kicker" data-reveal>Fotografía · Cuaderno personal</p>
-        <h1 class="hero-title" data-split="words">
-          Donde<br><em>he estado</em>.
-        </h1>
-        <p class="hero-sub" data-reveal>
-          Me gusta fotografiar lo que me encuentro cuando viajo — paisajes, animales,
-          calles, lo que sea que me haga detenerme — y también lo que se ve de noche,
-          con un telescopio. La idea es seguir viajando y seguir documentándolo.
-        </p>
-        <a class="btn btn-primary" href="#galeria" data-reveal data-magnetic="0.2">Ver la galería ↓</a>
-      </div>
-    </section>
-
-    <!-- MARQUEE -->
-    <div class="marquee" aria-hidden="true">
-      <div class="marquee-track" data-marquee>
-        <span>México</span><span class="marquee-dot">·</span>
-        <span>Japón</span><span class="marquee-dot">·</span>
-        <span>Perú</span><span class="marquee-dot">·</span>
-        <span>Astrofotografía</span><span class="marquee-dot">·</span>
-      </div>
-    </div>
-
-    <!-- MANIFIESTO -->
-    <section class="manifesto">
-      <div class="container manifesto-grid">
-        <p class="manifesto-num" data-reveal>01</p>
-        <div data-reveal>
-          <h2 data-split="words">Sobre estas fotos</h2>
-          <p>
-            No hay un plan detrás de esta selección. Son las cosas que me hicieron
-            detenerme en el camino: un volcán que aparece entre los árboles, un
-            cangrejo naranja sobre la roca, un letrero de neón a las once de la noche.
-            Las del cielo son otra historia — ésas piden paciencia, un telescopio y
-            horas de exposición para que aparezca algo que a simple vista no está.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- GALERÍA -->
-    <section class="gallery-section" id="galeria">
-      <div class="container">
-        <div class="section-head" data-reveal>
-          <p class="kicker">02 · Galería</p>
-          <h2 data-split="words">Lo que llevo hasta ahora</h2>
-        </div>
-
-        <div class="filter-bar" data-reveal role="tablist" aria-label="Filtrar fotos">
+  <main id="galeria" class="stage">
+    <h1 class="sr-only">Alonso Varela: fotografía de viajes y astrofotografía</h1>
+    <div class="hud">
+      <p class="hud-tag">Fotografía · Cuaderno personal</p>
+      <div class="hud-center">
+        <div class="filter-bar" role="tablist" aria-label="Filtrar fotos">
         <!-- FILTROS:inicio -->
           <button class="filter-btn is-active" type="button" data-filter="destacadas" role="tab" aria-selected="true">Destacadas</button>
           <button class="filter-btn" type="button" data-filter="mexico" role="tab" aria-selected="false">México</button>
@@ -99,722 +105,685 @@
           <button class="filter-btn" type="button" data-filter="astro" role="tab" aria-selected="false">Astrofotografía</button>
         <!-- FILTROS:fin -->
         </div>
+        <p class="hint" data-hint>Arrastra para explorar</p>
+      </div>
+      <p class="hud-count" data-count aria-live="polite"></p>
+    </div>
 
-        <div class="gallery-grid" data-gallery>
+    <div class="canvas" data-canvas role="region" aria-label="Galería de fotos: arrastra para explorar">
+      <div class="gallery-grid" data-gallery>
         <!-- GALERIA:inicio -->
-          <figure class="gallery-item" data-aspect="wide" data-category="mexico" data-reveal>
+          <figure class="gallery-item" data-aspect="wide" data-category="mexico">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/mexico-venados.webp">
               <img class="gallery-img" src="assets/img/thumb/mexico-venados.webp" alt="Dos venados pastando entre la niebla con la luz dorada de la mañana" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>México</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="wide" data-category="mexico" data-featured data-reveal>
+          <figure class="gallery-item" data-aspect="wide" data-category="mexico" data-featured>
             <button class="gallery-trigger" type="button" data-full="assets/img/full/mexico-volcanes.webp">
               <img class="gallery-img" src="assets/img/thumb/mexico-volcanes.webp" alt="El Popocatépetl y el Iztaccíhuatl vistos a la distancia bajo un cielo azul" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>México</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="wide" data-category="mexico" data-featured data-reveal>
+          <figure class="gallery-item" data-aspect="wide" data-category="mexico" data-featured>
             <button class="gallery-trigger" type="button" data-full="assets/img/full/mexico-gorriones.webp">
               <img class="gallery-img" src="assets/img/thumb/mexico-gorriones.webp" alt="Dos gorriones sobre el borde de una fuente rodeados de gotas de agua suspendidas" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>México</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="tall" data-category="mexico" data-featured data-reveal>
+          <figure class="gallery-item" data-aspect="tall" data-category="mexico" data-featured>
             <button class="gallery-trigger" type="button" data-full="assets/img/full/mexico-nubes.webp">
               <img class="gallery-img" src="assets/img/thumb/mexico-nubes.webp" alt="Nubes rosas y naranjas al atardecer sobre las copas de unos pinos" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>México</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="tall" data-category="mexico" data-featured data-reveal>
+          <figure class="gallery-item" data-aspect="tall" data-category="mexico" data-featured>
             <button class="gallery-trigger" type="button" data-full="assets/img/full/mexico-bosque.webp">
               <img class="gallery-img" src="assets/img/thumb/mexico-bosque.webp" alt="Bosque de pinos altos con la luz del sol proyectando sombras largas en el suelo" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>México</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="wide" data-category="mexico" data-featured data-reveal>
+          <figure class="gallery-item" data-aspect="wide" data-category="mexico" data-featured>
             <button class="gallery-trigger" type="button" data-full="assets/img/full/mexico-arana-luna.webp">
               <img class="gallery-img" src="assets/img/thumb/mexico-arana-luna.webp" alt="Una araña en su telaraña recortada contra la luna llena, sobre el cielo azul de la noche" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>México</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="wide" data-category="mexico" data-featured data-reveal>
+          <figure class="gallery-item" data-aspect="wide" data-category="mexico" data-featured>
             <button class="gallery-trigger" type="button" data-full="assets/img/full/mexico-arana-telarana.webp">
               <img class="gallery-img" src="assets/img/thumb/mexico-arana-telarana.webp" alt="Una araña en el centro de su telaraña iluminada en la oscuridad, con los hilos brillando" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>México</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="wide" data-category="mexico" data-featured data-reveal>
+          <figure class="gallery-item" data-aspect="wide" data-category="mexico" data-featured>
             <button class="gallery-trigger" type="button" data-full="assets/img/full/mexico-venado-bn.webp">
               <img class="gallery-img" src="assets/img/thumb/mexico-venado-bn.webp" alt="Un venado pastando en un campo con niebla densa, en blanco y negro" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>México</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="tall" data-category="mexico" data-reveal>
+          <figure class="gallery-item" data-aspect="tall" data-category="mexico">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/mexico-volcanes-azul.webp">
               <img class="gallery-img" src="assets/img/thumb/mexico-volcanes-azul.webp" alt="Los volcanes vistos desde un claro, entre capas de montañas azuladas" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>México</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="tall" data-category="mexico" data-reveal>
+          <figure class="gallery-item" data-aspect="tall" data-category="mexico">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/mexico-cerro.webp">
               <img class="gallery-img" src="assets/img/thumb/mexico-cerro.webp" alt="Un cerro rocoso entre nubes blancas visto desde un bosque de pinos" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>México</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="tall" data-category="mexico" data-reveal>
+          <figure class="gallery-item" data-aspect="tall" data-category="mexico">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/mexico-interior.webp">
               <img class="gallery-img" src="assets/img/thumb/mexico-interior.webp" alt="Interior art déco con puertas de vidrio emplomado, mármol y piso de ajedrez" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>México</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="tall" data-category="mexico" data-reveal>
+          <figure class="gallery-item" data-aspect="tall" data-category="mexico">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/mexico-luna-arboles.webp">
               <img class="gallery-img" src="assets/img/thumb/mexico-luna-arboles.webp" alt="La luna asomando entre las siluetas oscuras de las ramas de un árbol" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>México</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="tall" data-category="mexico" data-reveal>
+          <figure class="gallery-item" data-aspect="tall" data-category="mexico">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/mexico-arboles-rojo.webp">
               <img class="gallery-img" src="assets/img/thumb/mexico-arboles-rojo.webp" alt="Copas de árboles iluminadas de rojo contra un cielo nocturno estrellado" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>México</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="tall" data-category="mexico" data-reveal>
+          <figure class="gallery-item" data-aspect="tall" data-category="mexico">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/mexico-campamento.webp">
               <img class="gallery-img" src="assets/img/thumb/mexico-campamento.webp" alt="Una tienda de campaña armada en un claro de bosque de pinos" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>México</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="tall" data-category="mexico" data-reveal>
+          <figure class="gallery-item" data-aspect="tall" data-category="mexico">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/mexico-campamento-2.webp">
               <img class="gallery-img" src="assets/img/thumb/mexico-campamento-2.webp" alt="Una tienda de campaña abierta en un bosque de pinos secos" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>México</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="wide" data-category="mexico" data-reveal>
+          <figure class="gallery-item" data-aspect="wide" data-category="mexico">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/mexico-pajaro-rojo.webp">
               <img class="gallery-img" src="assets/img/thumb/mexico-pajaro-rojo.webp" alt="Un pájaro rojo posado en un cable, con el fondo verde desenfocado" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>México</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="wide" data-category="mexico" data-reveal>
+          <figure class="gallery-item" data-aspect="wide" data-category="mexico">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/mexico-gato-negro.webp">
               <img class="gallery-img" src="assets/img/thumb/mexico-gato-negro.webp" alt="Un gato negro de ojos amarillos mirando a la cámara en penumbra" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>México</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="wide" data-category="mexico" data-featured data-reveal>
+          <figure class="gallery-item" data-aspect="wide" data-category="mexico" data-featured>
             <button class="gallery-trigger" type="button" data-full="assets/img/full/mexico-perro-pared.webp">
               <img class="gallery-img" src="assets/img/thumb/mexico-perro-pared.webp" alt="La cabeza de un perro asomando por un hueco en una pared morada" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>México</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="tall" data-category="mexico" data-reveal>
+          <figure class="gallery-item" data-aspect="tall" data-category="mexico">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/mexico-concierto.webp">
               <img class="gallery-img" src="assets/img/thumb/mexico-concierto.webp" alt="Un anillo de luz roja proyectado sobre el escenario en un concierto" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>México</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="tall" data-category="japon" data-featured data-reveal>
+          <figure class="gallery-item" data-aspect="wide" data-category="mexico" data-featured>
+            <button class="gallery-trigger" type="button" data-full="assets/img/full/mexico-atardecer-dron.webp">
+              <img class="gallery-img" src="assets/img/thumb/mexico-atardecer-dron.webp" alt="Atardecer visto desde el aire sobre un valle con montañas, con nubes oscuras y el sol naranja sobre el horizonte" loading="lazy" decoding="async" />
+            </button>
+          </figure>
+
+          <figure class="gallery-item" data-aspect="wide" data-category="mexico" data-featured>
+            <button class="gallery-trigger" type="button" data-full="assets/img/full/mexico-avispa.webp">
+              <img class="gallery-img" src="assets/img/thumb/mexico-avispa.webp" alt="Una avispa vista de frente, con las antenas hacia adelante, sobre una hoja amarilla con tonos naranjas" loading="lazy" decoding="async" />
+            </button>
+          </figure>
+
+          <figure class="gallery-item" data-aspect="wide" data-category="mexico" data-featured>
+            <button class="gallery-trigger" type="button" data-full="assets/img/full/mexico-piton.webp">
+              <img class="gallery-img" src="assets/img/thumb/mexico-piton.webp" alt="Una pitón bola enrollada sobre fibra de coco, con las manchas doradas y negras de su piel bien definidas" loading="lazy" decoding="async" />
+            </button>
+          </figure>
+
+          <figure class="gallery-item" data-aspect="wide" data-category="mexico">
+            <button class="gallery-trigger" type="button" data-full="assets/img/full/mexico-escarabajo.webp">
+              <img class="gallery-img" src="assets/img/thumb/mexico-escarabajo.webp" alt="Un escarabajo de cuerpo velludo sobre una hoja verde, visto de cerca con el fondo desenfocado" loading="lazy" decoding="async" />
+            </button>
+          </figure>
+
+          <figure class="gallery-item" data-aspect="wide" data-category="mexico">
+            <button class="gallery-trigger" type="button" data-full="assets/img/full/mexico-gato-ojos-azules.webp">
+              <img class="gallery-img" src="assets/img/thumb/mexico-gato-ojos-azules.webp" alt="Un gato de pelo largo, crema con rayas naranjas y ojos azules, mirando a la cámara entre plantas verdes" loading="lazy" decoding="async" />
+            </button>
+          </figure>
+
+          <figure class="gallery-item" data-aspect="tall" data-category="japon" data-featured>
             <button class="gallery-trigger" type="button" data-full="assets/img/full/japon-skytree.webp">
               <img class="gallery-img" src="assets/img/thumb/japon-skytree.webp" alt="La torre Tokyo Skytree reflejada en el agua quieta de un canal" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Japón</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="tall" data-category="japon" data-featured data-reveal>
+          <figure class="gallery-item" data-aspect="tall" data-category="japon" data-featured>
             <button class="gallery-trigger" type="button" data-full="assets/img/full/japon-dotonbori.webp">
               <img class="gallery-img" src="assets/img/thumb/japon-dotonbori.webp" alt="El canal de Dotonbori de noche con los letreros de neón reflejados en el agua" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Japón</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="tall" data-category="japon" data-featured data-reveal>
+          <figure class="gallery-item" data-aspect="tall" data-category="japon" data-featured>
             <button class="gallery-trigger" type="button" data-full="assets/img/full/japon-fuji.webp">
               <img class="gallery-img" src="assets/img/thumb/japon-fuji.webp" alt="El monte Fuji nevado asomando detrás de los tejados de un pueblo" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Japón</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="tall" data-category="japon" data-featured data-reveal>
+          <figure class="gallery-item" data-aspect="tall" data-category="japon" data-featured>
             <button class="gallery-trigger" type="button" data-full="assets/img/full/japon-osaka.webp">
               <img class="gallery-img" src="assets/img/thumb/japon-osaka.webp" alt="El castillo de Osaka con sus tejados verdes y detalles dorados bajo un cielo despejado" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Japón</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="tall" data-category="japon" data-featured data-reveal>
+          <figure class="gallery-item" data-aspect="tall" data-category="japon" data-featured>
             <button class="gallery-trigger" type="button" data-full="assets/img/full/japon-tokyo-tower.webp">
               <img class="gallery-img" src="assets/img/thumb/japon-tokyo-tower.webp" alt="Vista panorámica de Tokio desde un mirador, con la Torre de Tokio al centro" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Japón</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="tall" data-category="japon" data-featured data-reveal>
+          <figure class="gallery-item" data-aspect="tall" data-category="japon" data-featured>
             <button class="gallery-trigger" type="button" data-full="assets/img/full/japon-pagoda.webp">
               <img class="gallery-img" src="assets/img/thumb/japon-pagoda.webp" alt="Una pagoda de cinco pisos recortada contra un cielo azul intenso" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Japón</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="tall" data-category="japon" data-reveal>
+          <figure class="gallery-item" data-aspect="tall" data-category="japon">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/japon-rio.webp">
               <img class="gallery-img" src="assets/img/thumb/japon-rio.webp" alt="El río Sumida al atardecer con un puente y los edificios de Tokio contra el cielo" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Japón</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="tall" data-category="japon" data-reveal>
+          <figure class="gallery-item" data-aspect="tall" data-category="japon">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/japon-asahi.webp">
               <img class="gallery-img" src="assets/img/thumb/japon-asahi.webp" alt="La escultura dorada del edificio Asahi iluminada por el sol de la tarde" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Japón</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="tall" data-category="japon" data-reveal>
+          <figure class="gallery-item" data-aspect="tall" data-category="japon">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/japon-shinsekai.webp">
               <img class="gallery-img" src="assets/img/thumb/japon-shinsekai.webp" alt="Un farol y una figura dorada sonriente en la entrada de un local de kushikatsu" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Japón</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="tall" data-category="japon" data-reveal>
+          <figure class="gallery-item" data-aspect="tall" data-category="japon">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/japon-glico.webp">
               <img class="gallery-img" src="assets/img/thumb/japon-glico.webp" alt="El letrero de neón del Glico Man en Dotonbori, de noche" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Japón</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="tall" data-category="japon" data-reveal>
+          <figure class="gallery-item" data-aspect="tall" data-category="japon">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/japon-templo-techo.webp">
               <img class="gallery-img" src="assets/img/thumb/japon-templo-techo.webp" alt="El alero decorado de un templo japonés contra el cielo azul, con ramas secas al frente" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Japón</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="tall" data-category="japon" data-reveal>
+          <figure class="gallery-item" data-aspect="tall" data-category="japon">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/japon-santuario.webp">
               <img class="gallery-img" src="assets/img/thumb/japon-santuario.webp" alt="Un santuario japonés de techo verde al fondo de una plaza empedrada vacía" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Japón</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="tall" data-category="japon" data-reveal>
+          <figure class="gallery-item" data-aspect="tall" data-category="japon">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/japon-foso.webp">
               <img class="gallery-img" src="assets/img/thumb/japon-foso.webp" alt="El foso del castillo de Osaka reflejando los edificios modernos de la ciudad" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Japón</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="tall" data-category="japon" data-reveal>
+          <figure class="gallery-item" data-aspect="tall" data-category="japon">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/japon-calle-vieja.webp">
               <img class="gallery-img" src="assets/img/thumb/japon-calle-vieja.webp" alt="Una casa de madera de dos pisos y una camioneta pequeña en una calle tranquila, a contraluz" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Japón</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="tall" data-category="japon" data-reveal>
+          <figure class="gallery-item" data-aspect="tall" data-category="japon">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/japon-callejon.webp">
               <img class="gallery-img" src="assets/img/thumb/japon-callejon.webp" alt="Un callejón estrecho y oscuro iluminado por faroles y letreros" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Japón</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="tall" data-category="japon" data-reveal>
+          <figure class="gallery-item" data-aspect="tall" data-category="japon">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/japon-floreria.webp">
               <img class="gallery-img" src="assets/img/thumb/japon-floreria.webp" alt="El interior iluminado de una florería de noche, con plantas en la entrada" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Japón</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="tall" data-category="japon" data-reveal>
+          <figure class="gallery-item" data-aspect="tall" data-category="japon">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/japon-godzilla.webp">
               <img class="gallery-img" src="assets/img/thumb/japon-godzilla.webp" alt="La cabeza de la estatua de Godzilla sobre la fachada de un edificio en Shinjuku" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Japón</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="tall" data-category="japon" data-reveal>
+          <figure class="gallery-item" data-aspect="tall" data-category="japon">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/japon-hachiko.webp">
               <img class="gallery-img" src="assets/img/thumb/japon-hachiko.webp" alt="La estatua de bronce del perro Hachikō en Shibuya" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Japón</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="tall" data-category="japon" data-reveal>
+          <figure class="gallery-item" data-aspect="tall" data-category="japon">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/japon-estacion.webp">
               <img class="gallery-img" src="assets/img/thumb/japon-estacion.webp" alt="El techo de vidrio y acero de una estación de tren con árboles debajo" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Japón</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="tall" data-category="japon" data-reveal>
+          <figure class="gallery-item" data-aspect="tall" data-category="japon">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/japon-barriles.webp">
               <img class="gallery-img" src="assets/img/thumb/japon-barriles.webp" alt="Una pared de barriles de sake decorados, con el sol filtrándose entre los árboles" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Japón</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="tall" data-category="japon" data-reveal>
+          <figure class="gallery-item" data-aspect="tall" data-category="japon">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/japon-cuervos.webp">
               <img class="gallery-img" src="assets/img/thumb/japon-cuervos.webp" alt="Tres cuervos posados en las copas de unos árboles sin hojas contra el cielo azul" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Japón</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="tall" data-category="japon" data-reveal>
+          <figure class="gallery-item" data-aspect="tall" data-category="japon">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/japon-triceratops.webp">
               <img class="gallery-img" src="assets/img/thumb/japon-triceratops.webp" alt="El cráneo fósil de un triceratops montado en la sala de un museo" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Japón</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="tall" data-category="japon" data-reveal>
+          <figure class="gallery-item" data-aspect="tall" data-category="japon">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/japon-trex.webp">
               <img class="gallery-img" src="assets/img/thumb/japon-trex.webp" alt="El esqueleto completo de un tiranosaurio en la sala de un museo" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Japón</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="tall" data-category="japon" data-reveal>
+          <figure class="gallery-item" data-aspect="tall" data-category="japon">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/japon-gatos-fichas.webp">
               <img class="gallery-img" src="assets/img/thumb/japon-gatos-fichas.webp" alt="Una pared cubierta de fichas con fotos y datos de gatos en adopción" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Japón</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="tall" data-category="japon" data-reveal>
+          <figure class="gallery-item" data-aspect="tall" data-category="japon">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/japon-pokemon-1.webp">
               <img class="gallery-img" src="assets/img/thumb/japon-pokemon-1.webp" alt="Una figura grande de Rayquaza con Pikachu en una tienda iluminada de azul" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Japón</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="tall" data-category="japon" data-reveal>
+          <figure class="gallery-item" data-aspect="tall" data-category="japon">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/japon-pokemon-2.webp">
               <img class="gallery-img" src="assets/img/thumb/japon-pokemon-2.webp" alt="Una figura oscura de un Pokémon dragón con detalles rojos y amarillos" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Japón</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="tall" data-category="japon" data-reveal>
+          <figure class="gallery-item" data-aspect="tall" data-category="japon">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/japon-snorlax.webp">
               <img class="gallery-img" src="assets/img/thumb/japon-snorlax.webp" alt="Una figura grande de Snorlax acompañada de Pikachu y Mew en una tienda" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Japón</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="tall" data-category="japon" data-reveal>
+          <figure class="gallery-item" data-aspect="tall" data-category="japon">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/japon-ramen-1.webp">
               <img class="gallery-img" src="assets/img/thumb/japon-ramen-1.webp" alt="Un tazón de ramen tantanmen visto desde arriba" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Japón</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="tall" data-category="japon" data-reveal>
+          <figure class="gallery-item" data-aspect="tall" data-category="japon">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/japon-ramen-2.webp">
               <img class="gallery-img" src="assets/img/thumb/japon-ramen-2.webp" alt="Un tazón de ramen tonkotsu con cerdo y cebollín visto desde arriba" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Japón</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="tall" data-category="peru" data-featured data-reveal>
+          <figure class="gallery-item" data-aspect="tall" data-category="peru" data-featured>
             <button class="gallery-trigger" type="button" data-full="assets/img/full/peru-humantay.webp">
               <img class="gallery-img" src="assets/img/thumb/peru-humantay.webp" alt="La laguna Humantay de agua turquesa al pie de montañas nevadas" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Perú</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="wide" data-category="peru" data-featured data-reveal>
+          <figure class="gallery-item" data-aspect="wide" data-category="peru" data-featured>
             <button class="gallery-trigger" type="button" data-full="assets/img/full/peru-arco.webp">
               <img class="gallery-img" src="assets/img/thumb/peru-arco.webp" alt="Un arco de piedra sobre el mar turquesa en las islas Ballestas" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Perú</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="wide" data-category="peru" data-featured data-reveal>
+          <figure class="gallery-item" data-aspect="wide" data-category="peru" data-featured>
             <button class="gallery-trigger" type="button" data-full="assets/img/full/peru-pelicanos.webp">
               <img class="gallery-img" src="assets/img/thumb/peru-pelicanos.webp" alt="Dos pelícanos peruanos de perfil recortados contra el cielo" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Perú</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="wide" data-category="peru" data-featured data-reveal>
+          <figure class="gallery-item" data-aspect="wide" data-category="peru" data-featured>
             <button class="gallery-trigger" type="button" data-full="assets/img/full/peru-cangrejo.webp">
               <img class="gallery-img" src="assets/img/thumb/peru-cangrejo.webp" alt="Un cangrejo naranja intenso sobre una roca cubierta de musgo verde" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Perú</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="wide" data-category="peru" data-reveal>
+          <figure class="gallery-item" data-aspect="wide" data-category="peru">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/peru-surf.webp">
               <img class="gallery-img" src="assets/img/thumb/peru-surf.webp" alt="Un surfista tomando una ola que rompe en blanco" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Perú</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="tall" data-category="peru" data-reveal>
+          <figure class="gallery-item" data-aspect="tall" data-category="peru">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/peru-humantay-2.webp">
               <img class="gallery-img" src="assets/img/thumb/peru-humantay-2.webp" alt="La laguna Humantay con las montañas nevadas reflejadas en el agua" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Perú</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="tall" data-category="peru" data-featured data-reveal>
+          <figure class="gallery-item" data-aspect="tall" data-category="peru" data-featured>
             <button class="gallery-trigger" type="button" data-full="assets/img/full/peru-nevado.webp">
               <img class="gallery-img" src="assets/img/thumb/peru-nevado.webp" alt="Un pico nevado entre nubes blancas y cielo azul en la cordillera" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Perú</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="tall" data-category="peru" data-reveal>
+          <figure class="gallery-item" data-aspect="tall" data-category="peru">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/peru-montana.webp">
               <img class="gallery-img" src="assets/img/thumb/peru-montana.webp" alt="Las franjas de colores de la montaña Vinicunca contra un cielo azul profundo" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Perú</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="wide" data-category="peru" data-reveal>
+          <figure class="gallery-item" data-aspect="wide" data-category="peru">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/peru-pueblo.webp">
               <img class="gallery-img" src="assets/img/thumb/peru-pueblo.webp" alt="Vista de un pueblo de tejados rojos al pie de unos cerros" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Perú</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="wide" data-category="peru" data-featured data-reveal>
+          <figure class="gallery-item" data-aspect="wide" data-category="peru" data-featured>
             <button class="gallery-trigger" type="button" data-full="assets/img/full/peru-surfista-solo.webp">
               <img class="gallery-img" src="assets/img/thumb/peru-surfista-solo.webp" alt="Un surfista solo sobre su tabla en mar abierto" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Perú</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="wide" data-category="peru" data-reveal>
+          <figure class="gallery-item" data-aspect="wide" data-category="peru">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/peru-aves-acantilado.webp">
               <img class="gallery-img" src="assets/img/thumb/peru-aves-acantilado.webp" alt="Cientos de aves marinas posadas sobre un acantilado de roca clara" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Perú</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="wide" data-category="peru" data-reveal>
+          <figure class="gallery-item" data-aspect="wide" data-category="peru">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/peru-pelicano-roca.webp">
               <img class="gallery-img" src="assets/img/thumb/peru-pelicano-roca.webp" alt="Un pelícano posado en una roca rodeado de aves marinas negras" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Perú</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="wide" data-category="peru" data-reveal>
+          <figure class="gallery-item" data-aspect="wide" data-category="peru">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/peru-pelicanos-2.webp">
               <img class="gallery-img" src="assets/img/thumb/peru-pelicanos-2.webp" alt="Primer plano de un pelícano peruano con el pico apoyado en el pecho" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Perú</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="wide" data-category="peru" data-reveal>
+          <figure class="gallery-item" data-aspect="wide" data-category="peru">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/peru-lobo-dormido.webp">
               <img class="gallery-img" src="assets/img/thumb/peru-lobo-dormido.webp" alt="Un lobo marino durmiendo sobre una roca, en primer plano" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Perú</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="wide" data-category="peru" data-reveal>
+          <figure class="gallery-item" data-aspect="wide" data-category="peru">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/peru-lobo.webp">
               <img class="gallery-img" src="assets/img/thumb/peru-lobo.webp" alt="Un lobo marino con la boca abierta sobre las rocas" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Perú</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="wide" data-category="peru" data-reveal>
+          <figure class="gallery-item" data-aspect="wide" data-category="peru">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/peru-lobos-colonia.webp">
               <img class="gallery-img" src="assets/img/thumb/peru-lobos-colonia.webp" alt="Un grupo de lobos marinos descansando y trepando entre las rocas" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Perú</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="wide" data-category="peru" data-reveal>
+          <figure class="gallery-item" data-aspect="wide" data-category="peru">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/peru-lobo-cria.webp">
               <img class="gallery-img" src="assets/img/thumb/peru-lobo-cria.webp" alt="Una cría de lobo marino recostada sobre una roca clara" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Perú</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="wide" data-category="peru" data-reveal>
+          <figure class="gallery-item" data-aspect="wide" data-category="peru">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/peru-cangrejo-roca.webp">
               <img class="gallery-img" src="assets/img/thumb/peru-cangrejo-roca.webp" alt="Un cangrejo sobre una roca rojiza, casi del mismo color" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Perú</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="wide" data-category="peru" data-reveal>
+          <figure class="gallery-item" data-aspect="wide" data-category="peru">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/peru-letrero.webp">
               <img class="gallery-img" src="assets/img/thumb/peru-letrero.webp" alt="Un letrero metálico cubierto de calcomanías de viajeros" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Perú</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="wide" data-category="peru" data-reveal>
+          <figure class="gallery-item" data-aspect="wide" data-category="peru">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/peru-gato-flores.webp">
               <img class="gallery-img" src="assets/img/thumb/peru-gato-flores.webp" alt="Un gato blanco y naranja durmiendo entre plantas de flores rojas" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Perú</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="wide" data-category="peru" data-reveal>
+          <figure class="gallery-item" data-aspect="wide" data-category="peru">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/peru-gato-amarillo.webp">
               <img class="gallery-img" src="assets/img/thumb/peru-gato-amarillo.webp" alt="Un gato blanco y negro sentado junto a un poste, rodeado de flores amarillas" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Perú</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="wide" data-category="peru" data-reveal>
+          <figure class="gallery-item" data-aspect="wide" data-category="peru">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/peru-gato-perfil.webp">
               <img class="gallery-img" src="assets/img/thumb/peru-gato-perfil.webp" alt="Un gato atigrado de perfil rodeado de flores rojas" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Perú</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="wide" data-category="peru" data-reveal>
+          <figure class="gallery-item" data-aspect="wide" data-category="peru">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/peru-gato-naranja.webp">
               <img class="gallery-img" src="assets/img/thumb/peru-gato-naranja.webp" alt="Un gato naranja y blanco maullando entre flores rojas" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Perú</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="wide" data-category="peru" data-reveal>
+          <figure class="gallery-item" data-aspect="wide" data-category="peru">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/peru-gato-mirada.webp">
               <img class="gallery-img" src="assets/img/thumb/peru-gato-mirada.webp" alt="Un gato atigrado mirando fijamente a la cámara entre flores rojas" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Perú</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="tall" data-category="peru" data-reveal>
+          <figure class="gallery-item" data-aspect="tall" data-category="peru">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/peru-gatos-dos.webp">
               <img class="gallery-img" src="assets/img/thumb/peru-gatos-dos.webp" alt="Dos gatos atigrados descansando entre flores rojas y amarillas" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Perú</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="wide" data-category="peru" data-reveal>
+          <figure class="gallery-item" data-aspect="wide" data-category="peru">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/peru-gato-pasto.webp">
               <img class="gallery-img" src="assets/img/thumb/peru-gato-pasto.webp" alt="Un gato tricolor recostado en el pasto" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Perú</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="wide" data-category="peru" data-reveal>
+          <figure class="gallery-item" data-aspect="wide" data-category="peru">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/peru-gato-pasto-2.webp">
               <img class="gallery-img" src="assets/img/thumb/peru-gato-pasto-2.webp" alt="Un gato tricolor sentado en el pasto mirando hacia un lado" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Perú</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="wide" data-category="peru" data-reveal>
+          <figure class="gallery-item" data-aspect="wide" data-category="peru">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/peru-gato-bostezo.webp">
               <img class="gallery-img" src="assets/img/thumb/peru-gato-bostezo.webp" alt="Un gato blanco bostezando de perfil" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Perú</span></figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="tall" data-category="astro" data-featured data-reveal>
+          <figure class="gallery-item" data-aspect="tall" data-category="astro" data-featured>
             <button class="gallery-trigger" type="button" data-full="assets/img/full/astro-orion.webp">
               <img class="gallery-img" src="assets/img/thumb/astro-orion.webp" alt="La nebulosa de Orión con nubes de gas rosas y azul verdoso entre estrellas" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Astrofotografía</span> Nebulosa de Orión (M 42) · 46 min</figcaption>
+              <figcaption class="gallery-caption">Nebulosa de Orión (M 42) · 46 min</figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="tall" data-category="astro" data-featured data-reveal>
+          <figure class="gallery-item" data-aspect="tall" data-category="astro" data-featured>
             <button class="gallery-trigger" type="button" data-full="assets/img/full/astro-laguna.webp">
               <img class="gallery-img" src="assets/img/thumb/astro-laguna.webp" alt="La nebulosa de la Laguna, una nube roja de gas con un núcleo brillante" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Astrofotografía</span> Nebulosa de la Laguna (M 8) · 127 min</figcaption>
+              <figcaption class="gallery-caption">Nebulosa de la Laguna (M 8) · 127 min</figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="tall" data-category="astro" data-featured data-reveal>
+          <figure class="gallery-item" data-aspect="tall" data-category="astro" data-featured>
             <button class="gallery-trigger" type="button" data-full="assets/img/full/astro-andromeda.webp">
               <img class="gallery-img" src="assets/img/thumb/astro-andromeda.webp" alt="La galaxia de Andrómeda, un óvalo luminoso rodeado de estrellas" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Astrofotografía</span> Galaxia de Andrómeda (M 31) · 39 min</figcaption>
+              <figcaption class="gallery-caption">Galaxia de Andrómeda (M 31) · 39 min</figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="tall" data-category="astro" data-featured data-reveal>
+          <figure class="gallery-item" data-aspect="tall" data-category="astro" data-featured>
             <button class="gallery-trigger" type="button" data-full="assets/img/full/astro-helix.webp">
               <img class="gallery-img" src="assets/img/thumb/astro-helix.webp" alt="La nebulosa Helix, un anillo de gas naranja con el centro verde" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Astrofotografía</span> Nebulosa Helix (NGC 7293) · 151 min</figcaption>
+              <figcaption class="gallery-caption">Nebulosa Helix (NGC 7293) · 151 min</figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="tall" data-category="astro" data-featured data-reveal>
+          <figure class="gallery-item" data-aspect="tall" data-category="astro" data-featured>
             <button class="gallery-trigger" type="button" data-full="assets/img/full/astro-luna.webp">
               <img class="gallery-img" src="assets/img/thumb/astro-luna.webp" alt="La Luna en fase gibosa con los cráteres nítidos sobre el fondo negro" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Astrofotografía</span> La Luna</figcaption>
+              <figcaption class="gallery-caption">La Luna</figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="tall" data-category="astro" data-featured data-reveal>
+          <figure class="gallery-item" data-aspect="tall" data-category="astro" data-featured>
             <button class="gallery-trigger" type="button" data-full="assets/img/full/astro-pleyades.webp">
               <img class="gallery-img" src="assets/img/thumb/astro-pleyades.webp" alt="Las Pléyades, estrellas azules envueltas en un velo de polvo" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Astrofotografía</span> Las Pléyades (M 45) · 91 min</figcaption>
+              <figcaption class="gallery-caption">Las Pléyades (M 45) · 91 min</figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="tall" data-category="astro" data-reveal>
+          <figure class="gallery-item" data-aspect="tall" data-category="astro">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/astro-orion-2.webp">
               <img class="gallery-img" src="assets/img/thumb/astro-orion-2.webp" alt="La nebulosa de Orión en tonos rojizos con las nubes de gas bien definidas" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Astrofotografía</span> Nebulosa de Orión (M 42) · 84 min</figcaption>
+              <figcaption class="gallery-caption">Nebulosa de Orión (M 42) · 84 min</figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="tall" data-category="astro" data-reveal>
+          <figure class="gallery-item" data-aspect="tall" data-category="astro">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/astro-orion-3.webp">
               <img class="gallery-img" src="assets/img/thumb/astro-orion-3.webp" alt="La nebulosa de Orión en tonos rosas y magenta, con el cúmulo central brillante" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Astrofotografía</span> Nebulosa de Orión (M 42) · 84 min</figcaption>
+              <figcaption class="gallery-caption">Nebulosa de Orión (M 42) · 84 min</figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="tall" data-category="astro" data-reveal>
+          <figure class="gallery-item" data-aspect="tall" data-category="astro">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/astro-dumbbell.webp">
               <img class="gallery-img" src="assets/img/thumb/astro-dumbbell.webp" alt="La nebulosa Dumbbell, una mancha verde y rosa entre cientos de estrellas" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Astrofotografía</span> Nebulosa Dumbbell (M 27) · 67 min</figcaption>
+              <figcaption class="gallery-caption">Nebulosa Dumbbell (M 27) · 67 min</figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="tall" data-category="astro" data-reveal>
+          <figure class="gallery-item" data-aspect="tall" data-category="astro">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/astro-m74.webp">
               <img class="gallery-img" src="assets/img/thumb/astro-m74.webp" alt="La galaxia espiral M 74 vista de frente, pequeña entre estrellas" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Astrofotografía</span> Galaxia M 74 · 116 min</figcaption>
+              <figcaption class="gallery-caption">Galaxia M 74 · 116 min</figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="tall" data-category="astro" data-reveal>
+          <figure class="gallery-item" data-aspect="tall" data-category="astro">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/astro-pleyades-2.webp">
               <img class="gallery-img" src="assets/img/thumb/astro-pleyades-2.webp" alt="Las Pléyades, un cúmulo de estrellas azules brillantes" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Astrofotografía</span> Las Pléyades (M 45) · 120 min</figcaption>
+              <figcaption class="gallery-caption">Las Pléyades (M 45) · 120 min</figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="tall" data-category="astro" data-reveal>
+          <figure class="gallery-item" data-aspect="tall" data-category="astro">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/astro-luna-1.webp">
               <img class="gallery-img" src="assets/img/thumb/astro-luna-1.webp" alt="La Luna en fase gibosa con los cráteres del borde muy marcados" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Astrofotografía</span> La Luna</figcaption>
+              <figcaption class="gallery-caption">La Luna</figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="tall" data-category="astro" data-reveal>
+          <figure class="gallery-item" data-aspect="tall" data-category="astro">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/astro-luna-2.webp">
               <img class="gallery-img" src="assets/img/thumb/astro-luna-2.webp" alt="La Luna casi llena con tonos azulados y los cráteres visibles" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Astrofotografía</span> La Luna</figcaption>
+              <figcaption class="gallery-caption">La Luna</figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="tall" data-category="astro" data-reveal>
+          <figure class="gallery-item" data-aspect="tall" data-category="astro">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/astro-luna-3.webp">
               <img class="gallery-img" src="assets/img/thumb/astro-luna-3.webp" alt="La Luna llena en blanco y negro, con los mares y cráteres bien marcados" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Astrofotografía</span> La Luna</figcaption>
+              <figcaption class="gallery-caption">La Luna</figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="wide" data-category="astro" data-reveal>
+          <figure class="gallery-item" data-aspect="wide" data-category="astro">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/astro-luna-4.webp">
               <img class="gallery-img" src="assets/img/thumb/astro-luna-4.webp" alt="La Luna en fase gibosa con tonos ámbar sobre el cielo negro" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Astrofotografía</span> La Luna</figcaption>
+              <figcaption class="gallery-caption">La Luna</figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="tall" data-category="astro" data-reveal>
+          <figure class="gallery-item" data-aspect="tall" data-category="astro">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/astro-saturno.webp">
               <img class="gallery-img" src="assets/img/thumb/astro-saturno.webp" alt="El planeta Saturno con sus anillos, pequeño sobre el fondo negro del cielo" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Astrofotografía</span> Saturno</figcaption>
+              <figcaption class="gallery-caption">Saturno</figcaption>
             </button>
           </figure>
 
-          <figure class="gallery-item" data-aspect="tall" data-category="astro" data-reveal>
+          <figure class="gallery-item" data-aspect="tall" data-category="astro">
             <button class="gallery-trigger" type="button" data-full="assets/img/full/astro-jupiter.webp">
               <img class="gallery-img" src="assets/img/thumb/astro-jupiter.webp" alt="El planeta Júpiter visible como un punto de luz amarillo en el cielo nocturno" loading="lazy" decoding="async" />
-              <figcaption class="gallery-caption"><span>Astrofotografía</span> Júpiter</figcaption>
+              <figcaption class="gallery-caption">Júpiter</figcaption>
+            </button>
+          </figure>
+
+          <figure class="gallery-item" data-aspect="tall" data-category="astro">
+            <button class="gallery-trigger" type="button" data-full="assets/img/full/astro-andromeda-2.webp">
+              <img class="gallery-img" src="assets/img/thumb/astro-andromeda-2.webp" alt="La galaxia de Andrómeda en tonos cálidos, con su núcleo brillante y las bandas de polvo entre las estrellas" loading="lazy" decoding="async" />
+              <figcaption class="gallery-caption">Galaxia de Andrómeda (M 31)</figcaption>
             </button>
           </figure>
         <!-- GALERIA:fin -->
-        </div>
       </div>
-    </section>
-
-    <!-- SOBRE MÍ -->
-    <section class="about" id="sobre">
-      <div class="container about-grid">
-        <figure class="about-figure" data-reveal>
-          <img src="assets/img/about-me.webp" alt="Yo, con casco y tabla de sandboard, sobre una duna de arena" loading="lazy" decoding="async" />
-        </figure>
-        <div class="about-text" data-reveal>
-          <p class="kicker">03 · Sobre mí</p>
-          <h2 data-split="words">Desarrollador de software.<br>La foto es <em>afición</em>.</h2>
-          <p>
-            Soy ingeniero de software. La fotografía la llevo por gusto, sin
-            pretensiones: me gusta la naturaleza, salir a caminar y traerme algo de
-            vuelta. Casi todo lo que hay aquí salió de viajes o de fines de semana
-            en el campo.
-          </p>
-          <p>
-            La astrofotografía vino después, con un telescopio pequeño. Apuntar al
-            mismo punto del cielo durante dos horas para que aparezca una nebulosa
-            resultó ser bastante parecido a programar: mucho de preparar, esperar y
-            ajustar.
-          </p>
-          <p class="about-stack">
-            Este sitio está hecho con <strong>HTML</strong>, <strong>CSS</strong> y
-            <strong>JavaScript</strong>, con <strong>GSAP</strong> y
-            <strong>ScrollTrigger</strong> para las animaciones y
-            <strong>Lenis</strong> para el scroll. Las imágenes las procesa un
-            script propio en <strong>Python</strong> (Pillow), que las convierte a
-            <strong>WebP</strong> en dos tamaños.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACTO -->
-    <section class="contact" id="contacto">
-      <div class="container contact-inner" data-reveal>
-        <p class="kicker">04 · Contacto</p>
-        <h2 data-split="words">¿Trabajamos juntos?</h2>
-        <p class="contact-sub">
-          Estoy abierto a proyectos de desarrollo de software y de páginas web
-          como ésta. Aquí me encuentras:
-        </p>
-        <div class="contact-links">
-          <div class="contact-social">
-            <a class="contact-link contact-link-sm" href="https://github.com/alonsovarela104" target="_blank" rel="noopener">GitHub ↗</a>
-            <a class="contact-link contact-link-sm" href="https://www.linkedin.com/in/jorge-alonso-avalos-varela-8b54b13b5/" target="_blank" rel="noopener">LinkedIn ↗</a>
-            <a class="contact-link contact-link-sm" href="https://www.instagram.com/alonsovarelaxd/" target="_blank" rel="noopener">Instagram ↗</a>
-          </div>
-        </div>
-      </div>
-    </section>
+    </div>
   </main>
 
-  <footer class="footer">
-    <div class="container footer-inner">
-      <p>&copy; <span data-year>2026</span> Alonso Varela. Todas las fotografías son mías.</p>
+  <!-- SOBRE MÍ -->
+  <dialog class="panel" data-panel="sobre" aria-labelledby="sobre-titulo">
+    <div class="panel-body">
+      <button class="panel-close" type="button" data-panel-close aria-label="Cerrar">✕</button>
+      <figure class="about-figure">
+        <img src="assets/img/about-me.webp" alt="Yo, con casco y tabla de sandboard, sobre una duna de arena" loading="lazy" decoding="async" />
+      </figure>
+      <p class="kicker">Sobre mí</p>
+      <h2 id="sobre-titulo">Desarrollador de software y fotógrafo aficionado</h2>
+      <p>
+        Soy ingeniero de software. Tomo fotos por hobby, sobre todo cuando salgo
+        de viaje o a caminar. Casi todo lo que hay en este sitio lo tomé en
+        viajes o en fines de semana en el campo.
+      </p>
+      <p>
+        Hace un tiempo empecé con la astrofotografía usando un telescopio
+        pequeño. Para sacar una nebulosa hay que apuntar al mismo punto del cielo
+        durante un par de horas, y el proceso se parece bastante a programar:
+        preparas todo, esperas y vas ajustando.
+      </p>
+      <h3>Sobre estas fotos</h3>
+      <p>
+        No las elegí con ningún criterio en particular. Son fotos de lo que me
+        fui encontrando: un volcán entre los árboles, un cangrejo naranja sobre
+        una roca, un letrero de neón de noche. Las del cielo llevan más trabajo:
+        telescopio, paciencia y horas de exposición para que aparezca algo que a
+        simple vista no se ve.
+      </p>
+      <p class="about-stack">
+        Este sitio está hecho con <strong>HTML</strong>, <strong>CSS</strong> y
+        <strong>JavaScript</strong>, sin librerías. Las imágenes las proceso con
+        un script en <strong>Python</strong> (Pillow) que las convierte a
+        <strong>WebP</strong> en dos tamaños.
+      </p>
     </div>
-  </footer>
+  </dialog>
+
+  <!-- CONTACTO -->
+  <dialog class="panel" data-panel="contacto" aria-labelledby="contacto-titulo">
+    <div class="panel-body">
+      <button class="panel-close" type="button" data-panel-close aria-label="Cerrar">✕</button>
+      <p class="kicker">Contacto</p>
+      <h2 id="contacto-titulo">¿Trabajamos juntos?</h2>
+      <p>
+        Estoy abierto a proyectos de desarrollo de software y de páginas web
+        como ésta. Aquí me encuentras:
+      </p>
+      <div class="contact-links">
+        <a class="contact-link" href="https://github.com/alonsovarela104" target="_blank" rel="noopener">GitHub ↗</a>
+        <a class="contact-link" href="https://www.linkedin.com/in/jorge-alonso-avalos-varela-8b54b13b5/" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a class="contact-link" href="https://www.instagram.com/alonsovarelaxd/" target="_blank" rel="noopener">Instagram ↗</a>
+      </div>
+      <p class="panel-foot">&copy; <span data-year>2026</span> Alonso Varela. Todas las fotografías son mías.</p>
+    </div>
+  </dialog>
 
   <!-- LIGHTBOX -->
   <dialog class="lightbox" data-lightbox aria-label="Foto ampliada">
@@ -829,10 +798,6 @@
     </figure>
   </dialog>
 
-  <script defer src="lib/gsap.min.js"></script>
-  <script defer src="lib/ScrollTrigger.min.js"></script>
-  <script defer src="lib/lenis.min.js"></script>
-  <script defer src="lib/manifest.js"></script>
-  <script defer src="main.js?v=20260726b"></script>
+  <script defer src="main.js?v=20261102a"></script>
 </body>
 </html>

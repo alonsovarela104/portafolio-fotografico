@@ -10,7 +10,7 @@ Cada entrada es:
 - slug .......... nombre de los archivos WebP generados
 - categoria ..... mexico | japon | peru | astro
 - destacada ..... True si aparece en la pestaña "Destacadas"
-- nota .......... dato extra que se muestra junto a la etiqueta (solo astrofotos)
+- nota .......... descripción visible (solo se muestra en astrofotos: objeto y exposición)
 - descripcion ... alt para lectores de pantalla y buscadores
 
 `tools/build.py` lee esto para generar las imágenes y la galería del HTML.
@@ -90,6 +90,22 @@ FOTOS = [
     ("mexico/IMG_9989.jpeg", "mexico-concierto", "mexico", False,
      "",
      "Un anillo de luz roja proyectado sobre el escenario en un concierto"),
+
+    ("mexico/dji_fly_20260921_182804_0050_1790037106155_photo.jpg", "mexico-atardecer-dron", "mexico", True,
+     "",
+     "Atardecer visto desde el aire sobre un valle con montañas, con nubes oscuras y el sol naranja sobre el horizonte"),
+    ("mexico/IMG_3208.JPG", "mexico-avispa", "mexico", True,
+     "",
+     "Una avispa vista de frente, con las antenas hacia adelante, sobre una hoja amarilla con tonos naranjas"),
+    ("mexico/IMG_3238.JPG", "mexico-piton", "mexico", True,
+     "",
+     "Una pitón bola enrollada sobre fibra de coco, con las manchas doradas y negras de su piel bien definidas"),
+    ("mexico/IMG_3193.JPG", "mexico-escarabajo", "mexico", False,
+     "",
+     "Un escarabajo de cuerpo velludo sobre una hoja verde, visto de cerca con el fondo desenfocado"),
+    ("mexico/IMG_3159.JPG", "mexico-gato-ojos-azules", "mexico", False,
+     "",
+     "Un gato de pelo largo, crema con rayas naranjas y ojos azules, mirando a la cámara entre plantas verdes"),
 
     # ==================== JAPÓN ====================
     ("japon/IMG_9221.jpeg", "japon-skytree", "japon", True,
@@ -318,6 +334,9 @@ FOTOS = [
     ("astro/2025-12-26-003113-Jupiter.jpg", "astro-jupiter", "astro", False,
      "Júpiter",
      "El planeta Júpiter visible como un punto de luz amarillo en el cielo nocturno"),
+    ("astro/Enhanced_stacked.jpg", "astro-andromeda-2", "astro", False,
+     "Galaxia de Andrómeda (M 31)",
+     "La galaxia de Andrómeda en tonos cálidos, con su núcleo brillante y las bandas de polvo entre las estrellas"),
 ]
 
 CATEGORIAS = [
@@ -329,3 +348,30 @@ CATEGORIAS = [
 ]
 
 ETIQUETA = {"mexico": "México", "japon": "Japón", "peru": "Perú", "astro": "Astrofotografía"}
+
+# ---------------------------------------------------------------------------
+# Datos del sitio para Google y para la vista previa al compartir el enlace.
+# build.py los usa para escribir las etiquetas del <head>, sitemap.xml y robots.txt.
+# ---------------------------------------------------------------------------
+
+# Dirección pública del sitio, sin barra final. Si cambia (por ejemplo a
+# https://fotos.catonmars.com), se cambia SOLO aquí y se vuelve a correr
+# `python tools/build.py --solo-html`.
+DOMINIO = "https://fotos.catonmars.com"
+
+SITIO = {
+    "nombre": "Alonso Varela",
+    "ocupacion": "Desarrollador de software y fotógrafo",
+    "titulo": "Alonso Varela | Fotografía de viajes y astrofotografía",
+    "descripcion": ("Portafolio fotográfico de Alonso Varela: fotos de viajes por México, "
+                    "Japón y Perú, y astrofotografía de nebulosas, galaxias y la Luna."),
+    # Tarjeta que aparece al compartir el enlace (1200x630, mejor en JPG que en WebP).
+    "imagen": "assets/img/og.jpg",
+    "imagen_alt": "Alonso Varela, portafolio fotográfico: fotos de viajes y astrofotografía",
+    # Perfiles propios: ayudan a Google a asociar el sitio con la misma persona.
+    "perfiles": [
+        "https://github.com/alonsovarela104",
+        "https://www.linkedin.com/in/jorge-alonso-avalos-varela-8b54b13b5/",
+        "https://www.instagram.com/alonsovarelaxd/",
+    ],
+}

@@ -7,20 +7,20 @@ viajo y algo de astrofotografía.
 
 ## Qué hice
 
-Una galería de fotos, organizadas por país y por tema, con una pestaña de
-Destacadas y un visor para abrir cada foto en grande.
+Una galería de fotos en un lienzo infinito que se arrastra, con las fotos
+sueltas e inclinadas sobre una foto de fondo. Se organiza por país y por tema,
+con una pestaña de Destacadas y un visor para abrir cada foto en grande.
 
 Como eran demasiadas fotos para acomodarlas a mano, escribí un script en Python
 que hace el trabajo pesado: corrige la orientación de las fotos del iPhone, las
 convierte a WebP, genera dos tamaños (uno ligero para la galería y uno grande
 para el visor) y arma la galería del HTML a partir de un catálogo. Así la página
-carga rápido aunque tenga 90 fotos.
+carga rápido aunque tenga cerca de 100 fotos.
 
 ## Tecnologías
 
-- HTML, CSS y JavaScript, sin frameworks ni build step
-- GSAP + ScrollTrigger para las animaciones
-- Lenis para el scroll suave
+- HTML, CSS y JavaScript, sin frameworks, librerías ni build step (el lienzo
+  con arrastre, inercia y repetición infinita es código propio)
 - Python (Pillow) para el procesamiento de imágenes
 - GitHub Pages para el hosting
 
